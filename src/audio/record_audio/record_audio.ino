@@ -1,7 +1,7 @@
 #include <PDM.h>
 
 static const char channels = 1;
-static const int frequency = 16000;
+static const int frequency = 16000; // 16 KHz
 
 short sampleBuffer[1024];
 volatile int samplesRead;
@@ -11,7 +11,7 @@ void setup() {
   while (!Serial);  // esperar conexion Serial
 
   PDM.onReceive(onPDMdata);
-  PDM.setGain(30);
+  PDM.setGain(30); // la ganancia
 
   if (!PDM.begin(channels, frequency)) {
     Serial.println("Failed to start PDM!");
